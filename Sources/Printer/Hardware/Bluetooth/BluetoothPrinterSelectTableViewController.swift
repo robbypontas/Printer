@@ -14,6 +14,8 @@ public class BluetoothPrinterSelectTableViewController: UITableViewController {
 
     public var sectionTitle: String? // convenience property
     
+    public var delegate: PrinterManagerDelegate?
+    
     var dataSource = [BluetoothPrinter]()
 
     override public func viewDidLoad() {
@@ -110,5 +112,6 @@ extension BluetoothPrinterSelectTableViewController: PrinterManagerDelegate {
         }
 
         tableView.endUpdates()
+        delegate?.nearbyPrinterDidChange(change)
     }
 }
